@@ -1,33 +1,25 @@
-import { getByDisplayValue } from '@testing-library/react';
+import './styles.css';
+// import { getByDisplayValue } from '@testing-library/react';
 import { useState } from 'react';
 
-export default function InputControls() {
+export default function InputControls({ onAddGuest }) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      if (firstName.trim() && lastName.trim()) {
+        onAddGuest({ firstName, lastName });
+        setFirstName('');
+        setLastName('');
+      }
+    }
+  };
+
   return (
-    <main
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-      }}
-    >
-      <form
-        onSubmit={(event) => event.preventDefault()}
-        style={{
-          height: '50vh',
-          width: '50vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#f4f4f4',
-          borderRadius: '20px',
-        }}
-      >
+    <main>
+      <h1>Guest List</h1>
+      <form onSubmit={(event) => event.preventDefault()}>
         <label>
           First name: <br />
           <input
