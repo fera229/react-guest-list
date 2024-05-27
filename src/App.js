@@ -1,11 +1,15 @@
-import InputControls from './InputControls';
+import GuestList from './GuestList';
+
+// import InputControls from './InputControls';
 
 export default function App() {
   return (
-    <div className="App">
+    <main className="App">
       <header className="App-header">
-        <InputControls />
+        <h1>Guest List</h1>
+
+        <GuestList />
       </header>
-    </div>
+    </main>
   );
 }
