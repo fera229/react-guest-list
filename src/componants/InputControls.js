@@ -1,4 +1,4 @@
-import './styles.css';
+import '../styles.css';
 // import { getByDisplayValue } from '@testing-library/react';
 import { useState } from 'react';
 
