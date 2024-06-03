@@ -17,27 +17,30 @@ export default function InputControls({ onAddGuest }) {
   };
 
   return (
-    <form onSubmit={(event) => event.preventDefault()}>
-      <label>
-        First name: <br />
-        <input
-          className="input"
-          value={firstName}
-          onChange={(event) => setFirstName(event.currentTarget.value)}
-          onKeyDown={handleKeyPress}
-        />
-      </label>
-      <br />
-      <label>
-        Last name:
+    <div className="formContainer">
+      <form onSubmit={(event) => event.preventDefault()} className="form">
+        <h1>Guest List</h1>
+        <label>
+          First name: <br />
+          <input
+            className="input"
+            value={firstName}
+            onChange={(event) => setFirstName(event.currentTarget.value)}
+            onKeyDown={handleKeyPress}
+          />
+        </label>
         <br />
-        <input
-          className="input"
-          value={lastName}
-          onChange={(event) => setLastName(event.currentTarget.value)}
-          onKeyDown={handleKeyPress}
-        />
-      </label>
-    </form>
+        <label>
+          Last name:
+          <br />
+          <input
+            className="input"
+            value={lastName}
+            onChange={(event) => setLastName(event.currentTarget.value)}
+            onKeyDown={handleKeyPress}
+          />
+        </label>
+      </form>
+    </div>
   );
 }

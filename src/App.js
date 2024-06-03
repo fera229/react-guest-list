@@ -1,4 +1,5 @@
 import GuestList from './componants/GuestList';
+import styles from './styles.css';
 
 // import InputControls from './InputControls';
 

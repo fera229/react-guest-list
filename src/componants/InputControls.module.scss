@@ -1,0 +1,30 @@
+@use 'sass:color';
+
+$primary-color: #1e1e1e;
+$secondary-color: #2e2e2e;
+$accent-color: #6200ea;
+$text-color: #ffffff;
+$border-radius: 8px;
+$padding: 20px;
+
+.inputContainer {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.inputField {
+  padding: 10px;
+  border: 1px solid $accent-color;
+  border-radius: $border-radius;
+  background-color: $secondary-color;
+  color: $text-color;
+  width: 200px;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: color.adjust($accent-color, $lightness: 10%);
+    outline: none;
+  }
+}

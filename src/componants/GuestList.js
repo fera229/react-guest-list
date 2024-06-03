@@ -1,13 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './GuestList.module.scss';
 import InputControls from './InputControls';
 
+const baseUrl = 'https://5kq7z3-4000.csb.app';
+
 export default function GuestList() {
   const [guests, setGuests] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchGuests() {
+      const response = await fetch(`${baseUrl}/guests`);
+      const allGuests = await response.json();
+      setGuests(allGuests);
+      console.log('data fetched');
+
+      setIsLoading(false);
+    }
+    fetchGuests().catch((error) => console.log(error));
+  }, []);
 
   const addGuest = (guest) => {
-    const newGuest = { ...guest, id: uuidv4(), attending: false };
+    const newGuest = { ...guest, attending: false };
     setGuests([...guests, newGuest]);
 
     // console.log(guest.id);
@@ -20,14 +35,14 @@ export default function GuestList() {
       ),
     );
   };
+
   const deleteGuest = (id) => {
     setGuests(guests.filter((guest) => guest.id !== id));
   };
   return (
     <div>
-      <h1>Guest List</h1>
-
       <InputControls onAddGuest={addGuest} />
+      {isLoading ? <h1> Loading ...</h1> : null}
       <ul>
         {guests.map((guest) => (
           <div key={`guest-${guest.id}`} data-test-id="guest">

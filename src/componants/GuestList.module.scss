@@ -1,0 +1,66 @@
+@use 'sass:color';
+
+$primary-color: #1e1e1e;
+$secondary-color: #2e2e2e;
+$accent-color: #6200ea;
+$text-color: #ffffff;
+$text-muted: #b3b3b3;
+$border-radius: 8px;
+$padding: 20px;
+
+.container {
+  margin: 20px;
+  padding: $padding;
+  background-color: $primary-color;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: $text-color;
+  text-align: center;
+}
+
+.guestItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: $secondary-color;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.guestItem li {
+  flex: 1;
+  list-style: none;
+  color: $text-color;
+}
+
+.checkbox {
+  margin-left: 10px;
+  transform: scale(1.2);
+}
+
+.removeButton {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: $accent-color;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.removeButton:hover {
+  background-color: color.adjust($accent-color, $lightness: -10%);
+}
+
+.loading {
+  text-align: center;
+  color: $text-muted;
+}
